@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+::selection {
+  background: #3e6259;
+  color: #f3f1ec;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3a3f45 #191c20;
+}

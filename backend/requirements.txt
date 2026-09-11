@@ -1,0 +1,43 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.9
+pydantic-settings>=2.5
+
+# Agent orchestration
+langchain>=0.3.7
+langchain-community>=0.3.5
+langgraph>=0.2.39
+langchain-groq>=0.2.1
+
+# Embeddings + vector store
+# NOTE: numpy/torch are intentionally NOT pinned tight here. On Windows,
+# the reliable way to get correct, matching wheels is to install torch
+# from PyTorch's own index FIRST (see README setup step 9), then install
+# everything else - pip will see torch is already satisfied and won't
+# try to resolve a conflicting version.
+numpy>=1.26
+sentence-transformers>=3.3
+chromadb>=0.5.20
+
+# Hybrid search
+rank-bm25>=0.2.2
+
+# PDF / doc parsing
+pypdf>=5.0
+
+# Utilities
+python-dotenv>=1.0
+
+# Phase 2: multi-agent tools
+# duckduckgo-search>=6.3
+ddgs>=9.0
+pandas>=2.2
+
+# Phase 3: async + streaming
+celery>=5.4
+redis>=5.0
+
+# Phase 4: evaluation + persistence
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
