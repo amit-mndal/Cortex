@@ -2,8 +2,9 @@ import json
 import redis
 from app.core.config import settings
 
-_redis_client = redis.Redis.from_url(settings.redis_url, decode_responses=True)
-
+# _redis_client = redis.Redis.from_url(settings.redis_url, decode_responses=True)
+_ssl_kwargs = {"ssl_cert_reqs": None} if settings.redis_url.startswith("rediss://") else {}
+_redis_client = redis.Redis.from_url(settings.redis_url, decode_responses=True, **_ssl_kwargs)
 
 def get_redis() -> redis.Redis:
     return _redis_client
