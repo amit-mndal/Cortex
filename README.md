@@ -24,6 +24,10 @@ skipping the agent entirely.
 - **Data-analysis agent** — writes and safely executes pandas code
   against an uploaded CSV, in a sandboxed subprocess with a timeout
 
+
+  <img width="1135" height="706" alt="image" src="https://github.com/user-attachments/assets/2c6b701f-124d-4757-9fb1-7c97d5dd05f5" />
+
+
 Each specialist is its own LangGraph subgraph; the Supervisor is the
 top-level graph that routes between them. Every node publishes a progress
 event over Redis pub/sub as it runs, which is how the live-streaming UI works.
