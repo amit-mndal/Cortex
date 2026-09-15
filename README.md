@@ -12,6 +12,10 @@ pipeline, a **semantic cache** checks whether a very similar question was
 already answered recently — if so, the cached answer returns instantly,
 skipping the agent entirely.
 
+
+<img width="1813" height="887" alt="image" src="https://github.com/user-attachments/assets/ea0488a5-4ef4-4c96-8c01-860e4e496fa4" />
+
+
 - **Document agent** — hybrid RAG (vector + keyword search) with a
   self-correcting retrieval loop (Corrective-RAG): grades its own results
   and rewrites the query if the first pass wasn't good enough
