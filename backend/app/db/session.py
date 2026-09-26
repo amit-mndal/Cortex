@@ -7,7 +7,14 @@ from app.db.models import Base
 # free hosting - resets on every redeploy).
 # Production: set DATABASE_URL to a Supabase/Render Postgres connection
 # string in your environment - nothing else in this file needs to change.
+# DATABASE_URL = settings.database_url
+
 DATABASE_URL = settings.database_url
+# SQLAlchemy defaults postgresql:// URLs to the psycopg (v3) driver, but we
+# install psycopg2-binary (v2) in requirements.txt - force the dialect
+# explicitly so it uses the driver that's actually installed.
+if DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://", 1)
 
 # SQLite needs this flag for use across threads (Celery worker + FastAPI);
 # Postgres doesn't need or accept it.
