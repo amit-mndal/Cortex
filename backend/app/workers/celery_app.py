@@ -15,11 +15,20 @@ def _with_ssl_param(url: str) -> str:
 
 _redis_url = _with_ssl_param(settings.redis_url)
 
+# celery_app = Celery(
+#     "cortex",
+#     broker=_redis_url,
+#     backend=_redis_url,
+# )
+
 celery_app = Celery(
     "cortex",
     broker=_redis_url,
     backend=_redis_url,
+    include=["app.workers.tasks"],
 )
+
+
 
 celery_app.conf.update(
     task_serializer="json",
