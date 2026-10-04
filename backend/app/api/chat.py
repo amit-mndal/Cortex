@@ -45,4 +45,13 @@ def stream(job_id: str):
         finally:
             pubsub.close()
 
-    return StreamingResponse(event_generator(), media_type="text/event-stream")
+    # return StreamingResponse(event_generator(), media_type="text/event-stream")
+    return StreamingResponse(
+    event_generator(),
+    media_type="text/event-stream",
+    headers={
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no",  # tells proxies (Render/Nginx) not to buffer this response
+    },
+)
